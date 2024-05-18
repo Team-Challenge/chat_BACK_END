@@ -10,7 +10,7 @@ from fastapi.security import (
     HTTPBearer,
     HTTPAuthorizationCredentials,
 )
-from jose import jwt, JWTError
+from jose import JWTError
 
 from chat.core.config import settings
 from chat.core.exceptions import IncorrectTokenFormat, Unauthorized, TokenExpired, UserIsNotPresent
@@ -24,10 +24,12 @@ FLASK_INFO_URL = "http://127.0.0.1:8080/accounts/info"
 
 auth_scheme = HTTPBearer(scheme_name="TokenScheme", auto_error=True)
 
+session = requests.Session()
+
 
 def get_user_info(token, user_id):
     headers = {"Authorization": f"Bearer {token}"}
-    response = requests.get(FLASK_INFO_URL, headers=headers)
+    response = session.get(FLASK_INFO_URL, headers=headers)
     if response.status_code == 200:
         return UserCopy(id=user_id, **response.json())
     else:
