@@ -1,14 +1,8 @@
 import os
-import sys
-from datetime import datetime
 from pathlib import Path
-from typing import Optional, Any, Union, Literal
+from typing import Optional, Any
 
-from pydantic import PostgresDsn, field_validator, EmailStr
-from pydantic_core.core_schema import ValidationInfo
 from pydantic_settings import BaseSettings, SettingsConfigDict
-
-# from pytz import timezone
 
 ENV_PATH = f"{Path(__file__).parent.parent.parent.absolute()}/.env"
 
@@ -25,8 +19,3 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
-# TIMEZONE = timezone('Europe/Kyiv')
-
-
-# def default_time():
-#     return datetime.now(tz=TIMEZONE)
