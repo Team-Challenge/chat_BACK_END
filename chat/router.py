@@ -8,5 +8,5 @@ router = APIRouter(tags=["Both"])
 
 
 @router.delete("/delete_message/{message_id}")
-def delete_message(user: UserDep, db: dbDep, message_id: int):
-    return soft_delete_message(db, user, message_id)
+def delete_message(user_id: UserDep, db: dbDep, message_id: int):
+    return soft_delete_message(db, user_id, message_id)

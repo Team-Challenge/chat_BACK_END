@@ -7,7 +7,7 @@ from alembic import context
 
 from chat.core.config import settings
 from chat.database.database import Base
-from chat.database.models import User, Chat, Message
+from chat.database.models import Chat, Message
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

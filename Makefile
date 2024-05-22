@@ -24,3 +24,5 @@ all: build push
 
 all_arm: build_arm push_arm
 
+prospector:
+	prospector --profile=prospector.yaml
